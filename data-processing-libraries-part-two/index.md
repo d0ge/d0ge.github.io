@@ -1,6 +1,10 @@
 # Data Processing Libraries. Part II
 
 
+
+GraphicsMagick before 1.3.32 allows malicious user to get access to arbitary file on vulnerable server.
+<!--more-->
+
 # CVE-2019-12921
 - Title:         Arbitary file read at TranslateTextEx GraphicsMagick before 1.3.32
 - Scope:         http://hg.code.sf.net/p/graphicsmagick/code/

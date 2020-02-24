@@ -18,9 +18,7 @@
       <pubDate>Mon, 24 Feb 2020 10:51:03 +0100</pubDate>
       
       <guid>/data-processing-libraries-part-one/</guid>
-      <description>ImageMagick memory leak at XBM coder ReadXBMImage in coders/xbm.c in ImageMagick before 7.0.8-9 (https://github.com/ImageMagick/ImageMagick/commit/216d117f05bff87b9dc4db55a1b1fadb38bcb786) leaves data uninitialized when processing an XBM file that has a negative pixel value. If the affected code is used as a library loaded into a process that includes sensitive information, that information sometimes can be leaked via the image data. Exploit for ImageMagick&amp;rsquo;s uninitialized memory disclosure in xbm coder.
-Auto-generation tool is xbmdump Usage
-1  xbmdump gen 128x128 dump.</description>
+      <description>&lt;p&gt;ImageMagick before 7.0.8-9 allows malicious user to get access to an uninitialized memory on vulnerable server.&lt;/p&gt;</description>
     </item>
     
   </channel>

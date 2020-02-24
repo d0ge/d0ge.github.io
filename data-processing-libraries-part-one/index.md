@@ -1,6 +1,9 @@
 # Data Processing Libraries. Part I
 
 
+ImageMagick before 7.0.8-9 allows malicious user to get access to an uninitialized memory on vulnerable server.
+<!--more-->
+
 # ImageMagick memory leak at XBM coder
 
 ReadXBMImage in coders/xbm.c in ImageMagick before 7.0.8-9 (https://github.com/ImageMagick/ImageMagick/commit/216d117f05bff87b9dc4db55a1b1fadb38bcb786) leaves data uninitialized when processing an XBM file that has a negative pixel value. 
