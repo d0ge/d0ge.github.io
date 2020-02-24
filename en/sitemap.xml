@@ -2,8 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>/about/</loc><priority>0</priority></url><url>
-            <loc>/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>/categories/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="ru"
                         href="/ru/categories/"
@@ -12,7 +11,14 @@
                     hreflang="en"
                     href="/categories/"
                     /></url><url>
-            <loc>/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>/tags/code-review/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/data-processing/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/data-processing-libraries-part-two/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/exploit/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/graphicsmagick/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/posts/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/reaserch/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="ru"
                         href="/ru/tags/"
@@ -21,7 +27,8 @@
                     hreflang="en"
                     href="/tags/"
                     /></url><url>
-            <loc>/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>/tags/vulnerability/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="ru"
                         href="/ru/"
@@ -29,4 +36,7 @@
                     rel="alternate"
                     hreflang="en"
                     href="/"
-                    /></url></urlset>
+                    /></url><url>
+            <loc>/data-processing-libraries-part-one/</loc><lastmod>2020-02-24T10:51:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/imagemagick/</loc><lastmod>2020-02-24T10:51:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/about/</loc><priority>0</priority></url></urlset>
