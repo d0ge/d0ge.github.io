@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Data Processing Libraries. Part I | Wow such pwn!</title>
-        <meta name="Description" content="Security"><meta property="og:title" content="Data Processing Libraries. Part I" />
-<meta property="og:description" content="ImageMagick before 7.0.8-9 allows malicious user to get access to an uninitialized memory on vulnerable server." />
+        <title>Security of Data processing libraries Part 1 - Information gathering | Wow such pwn!</title>
+        <meta name="Description" content="Security of Data processing libraries"><meta property="og:title" content="Security of Data processing libraries Part 1 - Information gathering" />
+<meta property="og:description" content="Security of Data processing libraries" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/data-processing-libraries-part-one/" />
 <meta property="article:published_time" content="2020-02-24T10:51:03+01:00" />
 <meta property="article:modified_time" content="2020-02-24T10:51:03+01:00" /><meta property="og:site_name" content="Wow such pwn!" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Data Processing Libraries. Part I"/>
-<meta name="twitter:description" content="ImageMagick before 7.0.8-9 allows malicious user to get access to an uninitialized memory on vulnerable server."/>
+<meta name="twitter:title" content="Security of Data processing libraries Part 1 - Information gathering"/>
+<meta name="twitter:description" content="Security of Data processing libraries"/>
 <meta name="theme-color" content="#ffffff">
 <meta name="msapplication-TileColor" content="#da532c">
 <link rel="canonical" href="/data-processing-libraries-part-one/" />
@@ -27,7 +27,7 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Data Processing Libraries. Part I",
+        "headline": "Security of Data processing libraries Part 1 - Information gathering",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/data-processing-libraries-part-one\/"
@@ -36,7 +36,7 @@
                 "url": "\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "vulnerability, exploit, code review, ImageMagick","wordcount":  154 ,
+            },"genre": "posts","keywords": "image, vulnerability, exploit","wordcount":  1496 ,
         "url": "\/data-processing-libraries-part-one\/","datePublished": "2020-02-24T10:51:03\x2b01:00","dateModified": "2020-02-24T10:51:03\x2b01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -46,7 +46,7 @@
                 "width":  127 ,
                 "height":  40 
                 }
-            },"description": ""
+            },"description": "Security of Data processing libraries"
     }
     </script></head>
     <body><script>
@@ -86,42 +86,43 @@
     window.mobileHeaderMode = "auto";
 </script>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Data Processing Libraries. Part I</h1><div class="post-meta">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Security of Data processing libraries Part 1 - Information gathering</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author">
                     <a class="author" href="https://twitter.com/d4d89704243" rel="author" target="_blank">
                         <i class="fas fa-user-circle fa-fw"></i>d4d
                     </a>
                 </span>&nbsp;<span class="post-category">included in&nbsp;
                             <span>
-                                <a href="/categories/data-processing">
-                                    <i class="far fa-folder fa-fw"></i>Data processing
+                                <a href="/categories/imagemagick">
+                                    <i class="far fa-folder fa-fw"></i>Image magick
                                 </a>
                             </span>&nbsp;
                             <span>
-                                <a href="/categories/reaserch">
-                                    <i class="far fa-folder fa-fw"></i>Reaserch
+                                <a href="/categories/graphicsmagick">
+                                    <i class="far fa-folder fa-fw"></i>Graphics magick
+                                </a>
+                            </span>&nbsp;
+                            <span>
+                                <a href="/categories/code-review">
+                                    <i class="far fa-folder fa-fw"></i>Code review
                                 </a>
                             </span></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-24>2020-02-24</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 154 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>1 min&nbsp;</div>
-        </div><div class="content"><p>ImageMagick before 7.0.8-9 allows malicious user to get access to an uninitialized memory on vulnerable server.</p>
-<h1 id="imagemagick-memory-leak-at-xbm-coder">ImageMagick memory leak at XBM coder</h1>
-<p>ReadXBMImage in coders/xbm.c in ImageMagick before 7.0.8-9 (<a href="https://github.com/ImageMagick/ImageMagick/commit/216d117f05bff87b9dc4db55a1b1fadb38bcb786">https://github.com/ImageMagick/ImageMagick/commit/216d117f05bff87b9dc4db55a1b1fadb38bcb786</a>) leaves data uninitialized when processing an XBM file that has a negative pixel value.
-If the affected code is used as a library loaded into a process that includes sensitive information, that information sometimes can be leaked via the image data.
-Exploit for ImageMagick&rsquo;s uninitialized memory disclosure in xbm coder.<br>
-Auto-generation tool is <a href="https://github.com/d0ge/xbmdump" target="_blank" rel="noopener noreffer">xbmdump</a>
-
-Usage</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">xbmdump gen 128x128 dump.xbm
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="sample-image">Sample image</h3>
+                <i class="fas fa-pencil-alt fa-fw"></i>about 1496 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>8 min&nbsp;</div>
+        </div><div class="content"><p>Common feature for modern web applications to save and process user files. It can be a avatar generation, file thumbnails, reports or screenshot generation. Open source data processing libraries are usually used for such purposes. There are number of known vulnerabilities at those libraries that can be used to get access to the sensitive informtation. This article is mainly about a brief security review on Data processing libraries in last years.</p>
+<h1 id="review-scope">Review Scope</h1>
+<p>This is not a complete review of all existing data processing libraries in a world (it will takes lots of time). Mostly I will focus on image processing libraries such as ImageMagick and GraphicsMagick. Couple words about libraries: ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you may use, copy, modify, and distribute in both open and proprietary. GraphicsMagick is a fork of ImageMagick, emphasizing stability of both programming API and command-line options. It was branched off ImageMagick&rsquo;s version 5.5.2 in 2002 after irreconcilable differences emerged in the developers&rsquo; group applications. Both libraries have a common core of source code, but the devil is in the detail and the same exploit can not be reproduced at all libraries.</p>
+<h1 id="glossary">Glossary</h1>
+<p>Before we start with code review let&rsquo;s start with features of ImageMagick &amp; GraphicsMagick. If your are familiar with command line syntax of libraries you can skip this paragraph. There are two major command line utils commonly used at application level: identify and convert. Application (we will focus on web, but it is not limited) firstly tries to analyse file and then convert it to desired format and resolution. So what is identify command line utility?</p>
+<ul>
+<li>The identify program describes the format and characteristics of one or more image files. It also reports if an image is incomplete or corrupt. The information returned includes the image number, the file name, the width and height of the image, whether the image is colormapped or not, the number of colors in the image, the number of bytes in the image, the format of the image (JPEG, PNM, etc.), and finally the number of seconds it took to read and process the image. ImageMagick identify <a href="https://imagemagick.org/script/identify.php" target="_blank" rel="noopener noreffer">man</a>
+ page.</li>
+</ul>
+<blockquote>
+<p>Delegate - program that used by library to process specific file format.</p>
+</blockquote>
+<p>Common usage of library looks like:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -130,18 +131,297 @@ Usage</p>
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">#define -_width 16
-#define -_height 16
-static char -_bits[] = {
-  0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 0x9bf219b0, 
-  0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
-  0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, };
+<pre class="chroma"><code class="language-bash" data-lang="bash">λ identify -version                                               
+Version: ImageMagick 7.0.9-8 Q16 x86_64 2019-12-09 https://imagemagick.org
+Copyright: © 1999-2020 ImageMagick Studio LLC
+License: https://imagemagick.org/script/license.php
+Features: Cipher DPC HDRI Modules OpenMP<span class="o">(</span>3.1<span class="o">)</span> 
+Delegates <span class="o">(</span>built-in<span class="o">)</span>: bzlib freetype heic jng jp2 jpeg lcms ltdl lzma openexr png tiff webp xml zlib
+
+λ identify ~/Dropbox/DataProcessing/IM_memory_read/10.xbm
+/Users/doge/DataProcessing/IM_memory_read/10.xbm XBM 128x128 128x128+0+0 8-bit sRGB 2c 8531B 0.000u 0:00.000
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="severity-medium---high">Severity: Medium - High</h3>
-<p>Severity level depends on the web server environment.</p></div><div class="post-footer" id="post-footer">
+</div><p>There are two usually commonly used outputs file format and file dimension: <code>XBM</code> and <code>128x128</code> at example.</p>
+<ul>
+<li>The convert program used to convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more. <a href="https://imagemagick.org/script/convert.php" target="_blank" rel="noopener noreffer">man</a>
+ page.</li>
+</ul>
+<p>Common (<em>vulnerable</em>) usage of library looks like:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">λ convert input.gif outpu.png
+
+λ identify sample.png  
+output.png PNG 600x400 600x400+0+0 8-bit sRGB 47c 24792B 0.000u 0:00.001
+</code></pre></td></tr></table>
+</div>
+</div><p>GraphicsMagick have almost the same syntax.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">gm identify file <span class="o">[</span> file ... <span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>GraphicsMagick identify <a href="http://www.graphicsmagick.org/identify.html" target="_blank" rel="noopener noreffer">man</a>
+ page.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">gm convert <span class="o">[</span> options ... <span class="o">]</span> input_file <span class="o">[</span> options ... <span class="o">]</span> output_file
+</code></pre></td></tr></table>
+</div>
+</div><p>GraphicsMagick convert <a href="http://www.graphicsmagick.org/convert.html" target="_blank" rel="noopener noreffer">man</a>
+ page.</p>
+<h3 id="security-of-imagemagick">Security of ImageMagick</h3>
+<p>There is special <a href="https://imagemagick.org/script/security-policy.php" target="_blank" rel="noopener noreffer">security policy</a>
+ that you can configure to meet your requirements. User can disable special coders (file formats).
+Example of policy looks like:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;policymap&gt;</span>
+  <span class="c">&lt;!-- temporary path must be a preexisting writable directory --&gt;</span>
+  ...
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;coder&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;MVG&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;coder&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;EPS&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;coder&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;PS&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;coder&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;PS2&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;coder&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;PS3&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;coder&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;PDF&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;coder&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;XPS&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;filter&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;delegate&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;HTTPS&#34;</span> <span class="nt">/&gt;</span>  
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;delegate&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;SHOW&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;delegate&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;WIN&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&#34;path&#34;</span> <span class="na">rights=</span><span class="s">&#34;none&#34;</span> <span class="na">pattern=</span><span class="s">&#34;@*&#34;</span><span class="nt">/&gt;</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>You can check you current policy configuration:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">λ identify -list policy
+
+Path: /etc/ImageMagick-6/policy.xml
+  Policy: undefined
+    rights: None 
+  Policy: Coder
+    rights: None 
+    pattern: EPHEMERAL
+  Policy: Coder
+    rights: None 
+    pattern: URL
+  Policy: Coder
+    rights: None 
+    pattern: HTTPS
+  ...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="security-of-graphicsmagick">Security of GraphicsMagick</h3>
+<p>There is special environment variable MAGICK_CODER_STABILITY to constrain the supported file formats to the subsets selected by PRIMARY or STABLE. After setting this environment variable (e.g. export MAGICK_CODER_STABILITY=PRIMARY), use gm convert -list format and verify that the format support you need is enabled. Selecting the PRIMARY or STABLE options blocks access of http and ftp URLs (SSRF vulnerability), but does not block SVG renderer access to read local image files. <a href="http://www.graphicsmagick.org/security.html" target="_blank" rel="noopener noreffer">man</a>
+ page.</p>
+<h1 id="passive-scan">Passive scan</h1>
+<p>To indentify what kind of data processing library are used at testing backend we can use set of sample images that are process differently. That will take lot of eforts from your side. Sometimes this process can be simplified by passive scan of image files metadata.</p>
+<h3 id="image-metadata">Image Metadata</h3>
+<p>There are number of image metadata standart used today:</p>
+<ul>
+<li>Exchangeable image file format <a href="https://en.wikipedia.org/wiki/Exif" target="_blank" rel="noopener noreffer">Exif</a>
+</li>
+<li>Extensible Metadata Platform <a href="https://en.wikipedia.org/wiki/Extensible_Metadata_Platform" target="_blank" rel="noopener noreffer">XMP</a>
+ metadata is XML document that can be exploited by <a href="https://github.com/BuffaloWill/oxml_xxe" target="_blank" rel="noopener noreffer">oxml_xxe</a>
+ tool. You can find more details at BuffaloWill <a href="http://oxmlxxe.github.io/reveal.js/slides.html#/" target="_blank" rel="noopener noreffer">presentation</a>
+</li>
+<li>PNG iTXt, tEXt, zTXt chunks. The iTXt, tEXt, and zTXt chunks (text chunks) are used for conveying textual information associated with the image. They are the places we can find all metadata of PNG file. Each of the text chunks contains as its first field a keyword that indicates the type of information represented by the text string.</li>
+</ul>
+<p>PNG iTXt, tEXt, zTXt chunks can be easely used for information gathering. For example PNG image metadata can be extracted by ImageMagick identify command tool:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">λ identify -verbose output.png 
+...
+Properties:
+    date:create: 2020-02-25T13:44:44+01:00
+    date:modify: 2020-02-25T13:44:44+01:00
+    png:bKGD: chunk was found <span class="o">(</span>see Background color, above<span class="o">)</span>
+    png:cHRM: chunk was found <span class="o">(</span>see Chromaticity, above<span class="o">)</span>
+    png:gAMA: <span class="nv">gamma</span><span class="o">=</span>0.45454544 <span class="o">(</span>See Gamma, above<span class="o">)</span>
+    png:IHDR.bit-depth-orig: <span class="m">16</span>
+    png:IHDR.bit_depth: <span class="m">16</span>
+    png:IHDR.color-type-orig: <span class="m">6</span>
+    png:IHDR.color_type: <span class="m">6</span> <span class="o">(</span>RGBA<span class="o">)</span>
+    png:IHDR.interlace_method: <span class="m">0</span> <span class="o">(</span>Not interlaced<span class="o">)</span>
+    png:IHDR.width,height: 884, <span class="m">945</span>
+    png:pHYs: <span class="nv">x_res</span><span class="o">=</span>90, <span class="nv">y_res</span><span class="o">=</span>90, <span class="nv">units</span><span class="o">=</span><span class="m">0</span>
+    png:sRGB: <span class="nv">intent</span><span class="o">=</span><span class="m">0</span> <span class="o">(</span>Perceptual Intent<span class="o">)</span>
+    png:text: <span class="m">3</span> tEXt/zTXt/iTXt chunks were found
+    png:tIME: 2020-02-25T12:44:44Z
+    signature: a3ac10ba63ea8307b3603ed1fdb484159dabeaf64714d2d7044705bcc636a8fc
+    svg:base-uri: file:///tmp/magick-21944uuDJ1rcgBBRP
+...
+</code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s take a close look at <em>svg:base-uri:</em> property. It will contains interesting information. It can be used to number of purposes. First of all vulnerable software disclosure sensitive inrotmation - full path to temp folder used for image conversation. This vulnerability firstly was discovered by black box testing and it takes a while to identify affected software.</p>
+<h3 id="imagemagick-info-disclosure-svg-coder">ImageMagick info disclosure SVG coder</h3>
+<p>Vulnerable code ImageMagick before 7.0.5-5. <a href="https://github.com/ImageMagick/ImageMagick/commit/cab049cec5034813efc221425aff2ce6a6bcb896" target="_blank" rel="noopener noreffer">Commit</a>
+ Library <em>librsvg</em> used by ImageMagick as delegate at SVG coder.</p>
+<blockquote>
+<p>Coder - image processing library component used for file.</p>
+</blockquote>
+<p><strong>librsvg</strong> is a free software SVG rendering library written as part of the GNOME project, intended to be lightweight and portable. The Linux command-line program rsvg uses the library to turn SVG files into raster images. Function rsvg_handle_get_base_uri returns the base uri, possibly null. SVG coder set property <code>svg:base-uri</code> with detalied information about source file full path.
+This vulnerability was not fixed at 6 version of ImageMagick and could be exploited with PES coder as well as SVG. PES coder use SVG for file processing. As SVG it is vulnerable to information disclosure. This feature could be usefull for attacker in case SVG files are disabled at web server.</p>
+<blockquote>
+<p>Note! GraphicsMagick uses own svg parser and does not vulnerable. Image metadata could be used to get access to sensitive information at GraphicsMagick by active scan as it will shown later.</p>
+</blockquote>
+<h3 id="imagemagick-info-disclosure-thumbnail-generator">ImageMagick info disclosure thumbnail generator</h3>
+<p>Plugin Burp and ZAP proxy <a href="https://github.com/PortSwigger/image-metadata" target="_blank" rel="noopener noreffer">Image Metadata</a>
+ allows to extract metadata from images. It support two types of metadata: JPEG <a href="https://en.wikipedia.org/wiki/Exif" target="_blank" rel="noopener noreffer">Exif</a>
+ and PNG <a href="https://www.w3.org/TR/PNG-Chunks.html#C.tEXt" target="_blank" rel="noopener noreffer">Text chunks</a>
+. Ahri discovered that image property Thumb can be used for information gathering, but vulnerabilty was not fixed by ImageMagick team. Vulnerable code can be found at <a href="https://github.com/ImageMagick/ImageMagick/blob/92a873d0873534bc6ad50e5509709919dccfbdb4/MagickCore/resize.c#L3738" target="_blank" rel="noopener noreffer">github</a>
+ The example of vulnerable usage of library:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">λ convert /home/doge/output.png -thumbnail 64x64 output.png 
+...
+λ identify -verbose output.png
+...
+Properties:
+    date:create: 2020-02-25T14:36:34+01:00
+    date:modify: 2020-02-25T14:36:34+01:00
+    png:bKGD: chunk was found <span class="o">(</span>see Background color, above<span class="o">)</span>
+    png:cHRM: chunk was found <span class="o">(</span>see Chromaticity, above<span class="o">)</span>
+    png:gAMA: <span class="nv">gamma</span><span class="o">=</span>0.45454544 <span class="o">(</span>See Gamma, above<span class="o">)</span>
+    png:IHDR.bit-depth-orig: <span class="m">8</span>
+    png:IHDR.bit_depth: <span class="m">8</span>
+    png:IHDR.color-type-orig: <span class="m">6</span>
+    png:IHDR.color_type: <span class="m">6</span> <span class="o">(</span>RGBA<span class="o">)</span>
+    png:IHDR.interlace_method: <span class="m">0</span> <span class="o">(</span>Not interlaced<span class="o">)</span>
+    png:IHDR.width,height: 60, <span class="m">64</span>
+    png:pHYs: <span class="nv">x_res</span><span class="o">=</span>90, <span class="nv">y_res</span><span class="o">=</span>90, <span class="nv">units</span><span class="o">=</span><span class="m">0</span>
+    png:sRGB: <span class="nv">intent</span><span class="o">=</span><span class="m">0</span> <span class="o">(</span>Perceptual Intent<span class="o">)</span>
+    png:text: <span class="m">11</span> tEXt/zTXt/iTXt chunks were found
+    png:tIME: 2020-02-25T13:36:34Z
+    signature: 2ef76784e8d9b4cd169c17efd47a82113c9c9ef102bbde85c926af4ddad6b99b
+    software: ImageMagick 6.8.9-9 Q16 x86_64 2019-11-12 http://www.imagemagick.org
+    Thumb::Document::Pages: <span class="m">1</span>
+    Thumb::Image::Height: <span class="m">945</span>
+    Thumb::Image::Width: <span class="m">884</span>
+    Thumb::Mimetype: image/png
+    Thumb::MTime: <span class="m">1582634684</span>
+    Thumb::Size: 654KBB
+    Thumb::URI: file:///home/doge/test.png
+...
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Note! GraphicsMagick does not add image properties <code>Thumb::</code></p>
+</blockquote>
+<h1 id="to-do">TO DO</h1>
+<p>You can find all payloads at Github <a href="https://github.com/d0ge/data-processing" target="_blank" rel="noopener noreffer">repository</a>
+</p>
+<h1 id="acknowledgement">Acknowledgement</h1>
+<p>Thanks ImageMagick and GraphicsMagick teams for the coordination and bug fixing!</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -153,32 +433,28 @@ static char -_bits[] = {
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/data-processing-libraries-part-one/index.md" target="_blank">Read Markdown</a>
                         </span></div>
-            <div class="post-info-share"><span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/data-processing-libraries-part-one/" data-title="Data Processing Libraries. Part I" data-via="https://twitter.com/d4d89704243" data-hashtags="vulnerability,exploit,code review,ImageMagick"><i class="fab fa-twitter fa-fw"></i>
-</a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/data-processing-libraries-part-one/" data-hashtag="vulnerability"><i class="fab fa-facebook-square fa-fw"></i>
+            <div class="post-info-share"><span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/data-processing-libraries-part-one/" data-title="Security of Data processing libraries Part 1 - Information gathering" data-via="https://twitter.com/d4d89704243" data-hashtags="image,vulnerability,exploit"><i class="fab fa-twitter fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/data-processing-libraries-part-one/" data-hashtag="image"><i class="fab fa-facebook-square fa-fw"></i>
 </a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/data-processing-libraries-part-one/"><i class="fab fa-linkedin fa-fw"></i>
-</a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/data-processing-libraries-part-one/" data-title="Data Processing Libraries. Part I" data-web><i class="fab fa-whatsapp fa-fw"></i>
-</a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="/data-processing-libraries-part-one/"><i class="fab fa-pinterest fa-fw"></i>
-</a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="/data-processing-libraries-part-one/" data-title="Data Processing Libraries. Part I"><i class="fab fa-hacker-news fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/data-processing-libraries-part-one/" data-title="Security of Data processing libraries Part 1 - Information gathering" data-web><i class="fab fa-whatsapp fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="/data-processing-libraries-part-one/" data-description="Security of Data processing libraries"><i class="fab fa-pinterest fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="/data-processing-libraries-part-one/" data-title="Security of Data processing libraries Part 1 - Information gathering"><i class="fab fa-hacker-news fa-fw"></i>
 </a></span></div>
         </div>
     </div>
 
     <div class="post-info-more">
         <section><span>
+                        <a href="/tags/image">
+                            <i class="fas fa-tag fa-fw"></i>image
+                        </a>
+                    </span>&nbsp;<span>
                         <a href="/tags/vulnerability">
                             <i class="fas fa-tag fa-fw"></i>vulnerability
                         </a>
                     </span>&nbsp;<span>
                         <a href="/tags/exploit">
                             <i class="fas fa-tag fa-fw"></i>exploit
-                        </a>
-                    </span>&nbsp;<span>
-                        <a href="/tags/code-review">
-                            <i class="fas fa-tag fa-fw"></i>code review
-                        </a>
-                    </span>&nbsp;<span>
-                        <a href="/tags/imagemagick">
-                            <i class="fas fa-tag fa-fw"></i>ImageMagick
                         </a>
                     </span>&nbsp;</section>
         <section>
@@ -200,15 +476,5 @@ static char -_bits[] = {
 </footer>
 </div><a href="#" class="dynamic-to-top animated faster" id="dynamic-to-top">
             <span>&nbsp;</span>
-        </a><script>
-        document.addEventListener("DOMContentLoaded", function () {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    { left: "$", right: "$", display: false },
-                    { left: "$$", right: "$$", display: true },
-                    { left: "\\(", right: "\\)", display: false },
-                    { left: "\\[", right: "\\]", display: true },]
-            });
-        });
-    </script><link rel="stylesheet" href="/css/lib/katex/katex.min.css"><link rel="stylesheet" href="/css/lib/katex/copy-tex.min.css"><script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script src="/js/lib/sharer/sharer.min.js"></script><script src="/js/lib/lazysizes/lazysizes.min.js"></script><script src="/js/lib/katex/katex.min.js"></script><script src="/js/lib/katex/auto-render.min.js"></script><script src="/js/lib/katex/copy-tex.min.js"></script><script src="/js/lib/katex/mhchem.min.js"></script><script src=/js/theme.min.js></script></body>
+        </a><script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script src="/js/lib/sharer/sharer.min.js"></script><script src="/js/lib/lazysizes/lazysizes.min.js"></script><script src=/js/theme.min.js></script></body>
 </html>

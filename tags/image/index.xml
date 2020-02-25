@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Wow such pwn!</title>
-    <link>/posts/</link>
-    <description>Recent content in Posts on Wow such pwn!</description>
+    <title>image on Wow such pwn!</title>
+    <link>/tags/image/</link>
+    <description>Recent content in image on Wow such pwn!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 24 Feb 2020 13:20:48 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 24 Feb 2020 10:51:03 +0100</lastBuildDate>
     
-	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/image/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Data Processing Libraries. Part II</title>
-      <link>/data-processing-libraries-part-two/</link>
-      <pubDate>Mon, 24 Feb 2020 13:20:48 +0100</pubDate>
-      
-      <guid>/data-processing-libraries-part-two/</guid>
-      <description>&lt;p&gt;GraphicsMagick before 1.3.32 allows malicious user to get access to arbitary file on vulnerable server.&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Security of Data processing libraries Part 1 - Information gathering</title>
