@@ -11,13 +11,13 @@
                     hreflang="en"
                     href="/categories/"
                     /></url><url>
-            <loc>/tags/code-review/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/categories/data-processing/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/data-processing-libraries-part-two/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/code-review/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/exploit/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/graphicsmagick/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/graphicsmagick/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/image/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/imagemagick/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/posts/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/categories/reaserch/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/data-processing-libraries-part-two/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/</loc><lastmod>2020-02-24T13:20:48&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="ru"
@@ -37,9 +37,5 @@
                     hreflang="en"
                     href="/"
                     /></url><url>
-            <loc>/categories/code-review/</loc><lastmod>2020-02-24T10:51:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/categories/graphicsmagick/</loc><lastmod>2020-02-24T10:51:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/image/</loc><lastmod>2020-02-24T10:51:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/categories/imagemagick/</loc><lastmod>2020-02-24T10:51:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/data-processing-libraries-part-one/</loc><lastmod>2020-02-24T10:51:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/about/</loc><priority>0</priority></url></urlset>
