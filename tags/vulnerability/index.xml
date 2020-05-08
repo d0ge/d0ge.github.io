@@ -18,7 +18,7 @@
       <pubDate>Mon, 24 Feb 2020 13:20:48 +0100</pubDate>
       
       <guid>/data-processing-libraries-part-two/</guid>
-      <description>&lt;p&gt;Common feature for modern web applications to save and process user files. It can be a avatar generation, file thumbnails, reports or screenshot generation. Open source data processing libraries are usually used for such purposes. There are number of known vulnerabilities at those libraries that can be used to get access to the sensitive informtation. At this article I&amp;rsquo;ll show you how to get access to arbitary file on vulnerable system and lure process memory into your open arms.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Common feature for modern web applications to save and process user files. It can be a avatar generation, file thumbnails, reports or screenshot generation. Open source data processing libraries are usually used for such purposes. There are number of known vulnerabilities at those libraries that can be used to get access to the sensitive informtation. At this article I&amp;rsquo;ll show you how to get access to arbitrary file on vulnerable system and lure process memory into your open arms.&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -1,7 +1,7 @@
 # Security of Data processing libraries Part 2
 
 
-Common feature for modern web applications to save and process user files. It can be a avatar generation, file thumbnails, reports or screenshot generation. Open source data processing libraries are usually used for such purposes. There are number of known vulnerabilities at those libraries that can be used to get access to the sensitive informtation. At this article I'll show you how to get access to arbitary file on vulnerable system and lure process memory into your open arms.
+Common feature for modern web applications to save and process user files. It can be a avatar generation, file thumbnails, reports or screenshot generation. Open source data processing libraries are usually used for such purposes. There are number of known vulnerabilities at those libraries that can be used to get access to the sensitive informtation. At this article I'll show you how to get access to arbitrary file on vulnerable system and lure process memory into your open arms.
 
 <!--more-->
 
@@ -57,7 +57,7 @@ To exploit it malicious user shoud find all coders using it. Here we should take
 - function SetImageAttribute(image,"comment",svg_info.comment) writes comment и title attributes to image.
 - To exploit vulnerability malicious user should convert SVG to GIF, JPEG thumbnails with metadata information.
 
-### Arbitary file read on image metadata
+### Arbitrary file read on image metadata
 ![Arbitary file read on image metadata](/images/imagemetadata.gif)
 
 # MVG coder file read
@@ -78,14 +78,14 @@ if (LocaleCompare((char *) name,"image") == 0)
 break;
 }
 ```
-What if malicious user can inject custom TextPrimitive inside ImagePrimitive at MVG coder. Let's take a look on SVG coder. Attribute `xlink:href` do not properly escape single quot `'` char. Arbitary MVG commands can be injected. Function AnnotateImage(annotate.c) reads text from file with TranslateTextEx that accepts '@' as local file. 
+What if malicious user can inject custom TextPrimitive inside ImagePrimitive at MVG coder. Let's take a look on SVG coder. Attribute `xlink:href` do not properly escape single quot `'` char. Arbitrary MVG commands can be injected. Function AnnotateImage(annotate.c) reads text from file with TranslateTextEx that accepts '@' as local file. 
 Local file read vulnerability affects GraphicsMagick before 1.3.32. Multiple decoders that may use MVG syntaxis by default. To exploit this vulnerability untrusted user file should be converted to another format with command:
 
 ```bash
 gm convert exploit.svg output.png
 ```
 
-### Arbitary file read on SVG coder
+### Arbitrary file read on SVG coder
 
 ```xml
 <?xml version="1.0" standalone="no"?>
@@ -98,8 +98,8 @@ gm convert exploit.svg output.png
 	x="0" y="0" height="137px" width="137px"/>
 </svg>
 ```
-### Arbitary file read on image metadata
-![Arbitary file read on MVG coder](/images/output_foo_gm.png)
+### Arbitrary file read on MVG coder
+![Arbitrary file read on MVG coder](/images/output_foo_gm.png)
 
 
 # Impact
