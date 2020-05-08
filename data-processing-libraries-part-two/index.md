@@ -7,7 +7,11 @@ Common feature for modern web applications to save and process user files. It ca
 
 # Tragick
 
-[ImageTragick](https://imagetragick.com/) - multiple vulnerabilities in ImageMagick. One of the vulnerabilities can lead to remote code execution (RCE) if you process user submitted images. The exploit for this vulnerability is being used in the wild. GraphicsMagick library successfully fixed RCE but what about another vulnerabilities? Let's take a look on exploit.svg used at CVE-2016-3717.
+[ImageTragick](https://imagetragick.com/) - multiple vulnerabilities in ImageMagick. One of the vulnerabilities can lead to remote code execution (RCE) if you process user submitted images. The exploit for this vulnerability is being used in the wild. GraphicsMagick library successfully fixed RCE but what about another vulnerabilities? Let's take a look on exploit.svg used at CVE-2016-3717 and try to convert it with library.
+
+```bash
+gm convert exploit.svg output.png
+```
 
 ```text
 push graphic-context
