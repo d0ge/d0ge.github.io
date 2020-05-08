@@ -1,4 +1,4 @@
-# Security of Data processing libraries Part 1 - Information gathering
+# Security of Data processing libraries Part 1
 
 
 Common feature for modern web applications to save and process user files. It can be a avatar generation, file thumbnails, reports or screenshot generation. Open source data processing libraries are usually used for such purposes. There are number of known vulnerabilities at those libraries that can be used to get access to the sensitive informtation. This article is mainly about a brief security review on Data processing libraries in last years.
