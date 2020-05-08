@@ -64,6 +64,9 @@ To exploit it malicious user shoud find all coders using it. Here we should take
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1237px" height="1237px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= " http://www.w3.org/1999/xlink"> <image xlink:href="http://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" x="0" y="0" height="137px" width="137px"/></svg>
 ```
+![Arbitary file read on image metadata](/images/imagemetadata.gif)
+
+# MVG coder file read
 
 Another interesting coder is MVG and image processing function
 
