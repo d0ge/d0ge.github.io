@@ -50,7 +50,7 @@ char *AmpersandTranslateText(const ImageInfo *image_info,
 }
 ```
 
-To exploit it malicious user shoud find all coders using it. Here we should take a little step back and return to Metadata. Please read [first part](https://d0ge.github.io/data-processing-libraries-part-two/). Translate function requests in attribute text when the blob is not open. This is really gross since it is assumed that the attribute is supplied by the user and the user intends for translation to occur.  However, 'comment' and 'label' attributes may also come from an image file and may contain arbitrary text.  As a crude-workaround, translations are only performed when the blob is not open. Is it secure to check blob state? It was found that SVG coder can be used to exploit it. We will skip a lot of C code and let's take a look on pseudocode:
+To exploit it malicious user shoud find all coders using it. Here we should take a little step back and return to Metadata. Please read [first part](https://d0ge.github.io/data-processing-libraries-part-one/) Translate function requests in attribute text when the blob is not open. This is really gross since it is assumed that the attribute is supplied by the user and the user intends for translation to occur.  However, 'comment' and 'label' attributes may also come from an image file and may contain arbitrary text.  As a crude-workaround, translations are only performed when the blob is not open. Is it secure to check blob state? It was found that SVG coder can be used to exploit it. We will skip a lot of C code and let's take a look on pseudocode:
 - XML Parser end work
 - CloseBlob(image) 
 - MVG delegate start it work
