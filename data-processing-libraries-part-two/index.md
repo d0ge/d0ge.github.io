@@ -78,7 +78,7 @@ if (LocaleCompare((char *) name,"image") == 0)
 break;
 }
 ```
-What if malicious user can inject custom TextPrimitive inside ImagePrimitive at MVG coder. Let's take a look on SVG coder. When it reads `xlink:href` attribute single qout  `'` is not properly escaped and any MVG commands can be injected. Function AnnotateImage(annotate.c) reads text from file with TranslateTextEx that accepts '@' as local file. 
+What if malicious user can inject custom TextPrimitive inside ImagePrimitive at MVG coder. Let's take a look on SVG coder. Attribute `xlink:href` do not properly escape single quot `'` char. Arbitary MVG commands can be injected. Function AnnotateImage(annotate.c) reads text from file with TranslateTextEx that accepts '@' as local file. 
 Local file read vulnerability affects GraphicsMagick before 1.3.32. Multiple decoders that may use MVG syntaxis by default. To exploit this vulnerability untrusted user file should be converted to another format with command:
 
 ```bash
