@@ -22,7 +22,7 @@ Library will return error `Unable to open file` but what if we will change explo
 gm convert label:@/etc/passwd output.png
 ```
 
-GraphicsMagick returns first line of file: `root:x:0:0:root:/root:/bin/bash`. So vulnerability exists and can be exploited on some coders. Let's take a look on Translate Text function. It have an interesting behavior: If text starts with '@' then try to replace it with the content of the file name which follows. 
+GraphicsMagick returns first line of file: `root:0:0:0:root:/root:/bin/bash`. So vulnerability exists and can be exploited on some coders. Let's take a look on Translate Text function. It have an interesting behavior: If text starts with '@' then try to replace it with the content of the file name which follows. 
 
 ```c
 char *AmpersandTranslateText(const ImageInfo *image_info,

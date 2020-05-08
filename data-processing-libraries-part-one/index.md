@@ -187,7 +187,7 @@ Properties:
 
 > Note! GraphicsMagick does not add image properties `Thumb::`
 
-# TO DO
+# Exploits
 
 You can find all payloads at Github [repository](https://github.com/d0ge/data-processing)
 

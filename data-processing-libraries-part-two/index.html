@@ -137,7 +137,7 @@ pop graphic-context
 <pre class="chroma"><code class="language-bash" data-lang="bash">gm convert label:@/etc/passwd output.png
 </code></pre></td></tr></table>
 </div>
-</div><p>GraphicsMagick returns first line of file: <code>root❌0:0:root:/root:/bin/bash</code>. So vulnerability exists and can be exploited on some coders. Let&rsquo;s take a look on Translate Text function. It have an interesting behavior: If text starts with &lsquo;@&rsquo; then try to replace it with the content of the file name which follows.</p>
+</div><p>GraphicsMagick returns first line of file: <code>root:0:0:0:root:/root:/bin/bash</code>. So vulnerability exists and can be exploited on some coders. Let&rsquo;s take a look on Translate Text function. It have an interesting behavior: If text starts with &lsquo;@&rsquo; then try to replace it with the content of the file name which follows.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
