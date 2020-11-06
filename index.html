@@ -101,7 +101,7 @@
                         <a href="/categories/code-review">
                             <i class="far fa-folder fa-fw"></i>Code review
                         </a>
-                    </span></span></div><div class="content"><p>A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at debug GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin <a href="https://github.com/PortSwigger/param-miner" target="_blank" rel="noopener noreffer">param-miner</a>
+                    </span></span></div><div class="content"><p>A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at <code>debug</code> GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin <a href="https://github.com/PortSwigger/param-miner" target="_blank" rel="noopener noreffer">param-miner</a>
 . There was no way to exploit SSRF but interesting parameter <code>action</code> was discovered. Future investigation show that it is default behavior of <a href="https://craftcms.com/" target="_blank" rel="noopener noreffer">Craft CMS</a>
 . Fast search by public CVE retured promising vulnerability CVE-2018-14716. You can find information about issue and way to exploit it at blog post <a href="http://ha.cker.info/exploitation-of-server-side-template-injection-with-craft-cms-plguin-seomatic/" target="_blank" rel="noopener noreffer">0xB455</a>
 . When you will finish reading article return and we find way to bypass fix and execute code at vulnerable system.</p></div><div class="post-footer">
