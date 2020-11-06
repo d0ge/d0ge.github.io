@@ -7,22 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 06 Nov 2020 16:12:40 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 24 Feb 2020 13:20:48 +0100</lastBuildDate>
     
 	<atom:link href="/categories/code-review/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Multiple vulnerabilities at Craft CMS SEOmatic plugin</title>
-      <link>/multiple-vulnerabilities-craft-cms-seomatic/</link>
-      <pubDate>Fri, 06 Nov 2020 16:12:40 +0100</pubDate>
-      
-      <guid>/multiple-vulnerabilities-craft-cms-seomatic/</guid>
-      <description>&lt;p&gt;A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at &lt;code&gt;debug&lt;/code&gt; GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin &lt;a href=&#34;https://github.com/PortSwigger/param-miner&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;param-miner&lt;/a&gt;
-. There was no way to exploit SSRF but interesting parameter &lt;code&gt;action&lt;/code&gt; was discovered. Future investigation show that it is default behavior of &lt;a href=&#34;https://craftcms.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;Craft CMS&lt;/a&gt;
-. Fast search by public CVE retured promising vulnerability CVE-2018-14716. You can find information about issue and way to exploit it at blog post &lt;a href=&#34;http://ha.cker.info/exploitation-of-server-side-template-injection-with-craft-cms-plguin-seomatic/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;0xB455&lt;/a&gt;
-. When you will finish reading article return and we find way to bypass fix and execute code at vulnerable system.&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Security of Data processing libraries Part 2</title>
