@@ -36,7 +36,7 @@
                 "url": "\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "rce, ssrf, exploit","wordcount":  1088 ,
+            },"genre": "posts","keywords": "rce, ssrf, exploit","wordcount":  1094 ,
         "url": "\/multiple-vulnerabilities-craft-cms-seomatic\/","datePublished": "2020-11-06T16:12:40\x2b01:00","dateModified": "2020-11-06T16:12:40\x2b01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -108,7 +108,7 @@
                                 </a>
                             </span></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-11-06>2020-11-06</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 1088 words&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 1094 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>6 min&nbsp;</div>
         </div><div class="content"><p>A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at debug GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin <a href="https://github.com/PortSwigger/param-miner" target="_blank" rel="noopener noreffer">param-miner</a>
 . There was no way to exploit SSRF but interesting parameter <code>action</code> was discovered. Future investigation show that it is default behavior of <a href="https://craftcms.com/" target="_blank" rel="noopener noreffer">Craft CMS</a>
@@ -360,6 +360,11 @@ Content-Length: 779
 </div><p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-rce.png" alt="Seomatic RCE" title="Seomatic RCE" class="lazyload">
 <figcaption class="image-caption">Seomatic RCE</figcaption></figure>
 </p>
+<h3 id="awesome-calc">Awesome calc</h3>
+<p>Proof-of-Concept
+<figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-rce-poc.mv" alt="Seomatic RCE PoC" title="Seomatic RCE PoC" class="lazyload">
+<figcaption class="image-caption">Seomatic RCE PoC</figcaption></figure>
+</p>
 <h1 id="bonus-server-side-request-forgery">Bonus. Server Side Request Forgery</h1>
 <p>Unauthorized Server Side Request Forgery at Craft CMS Seomatic plugin version before 3.3.15</p>
 <h3 id="details-about-vulnerability">Details about vulnerability</h3>
@@ -423,8 +428,7 @@ Cache-Control: max-age=0
 <li>17 Aug 2020 fix released</li>
 <li>CVE-ID to be done</li>
 <li>XX Xxx Public disclosure</li>
-</ol>
-</div><div class="post-footer" id="post-footer">
+</ol></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
