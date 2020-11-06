@@ -138,10 +138,6 @@ Content-Length: 779
 
 ![Seomatic RCE](/images/seomatic-rce.png)
 
-### Awesome calc
-Proof-of-Concept
-![Seomatic RCE PoC](/images/seomatic-rce-poc.mov)
-
 # Bonus. Server Side Request Forgery
 
 Unauthorized Server Side Request Forgery at Craft CMS Seomatic plugin version before 3.3.15
