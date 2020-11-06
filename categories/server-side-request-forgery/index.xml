@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server Side Request Forgery on Wow such pwn!</title>
+    <link>/categories/server-side-request-forgery/</link>
+    <description>Recent content in Server Side Request Forgery on Wow such pwn!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 06 Nov 2020 16:12:40 +0100</lastBuildDate>
+    
+	<atom:link href="/categories/server-side-request-forgery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Multiple vulnerabilities at Craft CMS SEOmatic plugin</title>
+      <link>/multiple-vulnerabilities-craft-cms-seomatic/</link>
+      <pubDate>Fri, 06 Nov 2020 16:12:40 +0100</pubDate>
+      
+      <guid>/multiple-vulnerabilities-craft-cms-seomatic/</guid>
+      <description>A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at debug GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin param-miner . There was no way to exploit SSRF but interesting parameter action was discovered. Future investigation show that it is default behavior of Craft CMS . Fast search by public CVE retured promising vulnerability CVE-2018-14716.</description>
+    </item>
+    
+  </channel>
+</rss>

