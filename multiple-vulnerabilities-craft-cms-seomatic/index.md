@@ -141,5 +141,5 @@ Cache-Control: max-age=0
 1. 13 Aug 2020 Vulnerabilities were discovered
 2. 14 Aug 2020 Nystudio107 was informed about the vulnerabilities
 3. 17 Aug 2020 fix released
-4. CVE-ID to be done
-5. XX Xxx Public disclosure
+4. 17 Nov 2020 CVE-2020-24961 assigned
+5. 18 Nov 2020  Public disclosure
