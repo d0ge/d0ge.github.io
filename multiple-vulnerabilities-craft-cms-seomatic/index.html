@@ -36,7 +36,7 @@
                 "url": "\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "rce, ssrf, exploit","wordcount":  943 ,
+            },"genre": "posts","keywords": "rce, ssrf, exploit","wordcount":  946 ,
         "url": "\/multiple-vulnerabilities-craft-cms-seomatic\/","datePublished": "2020-11-06T16:12:40\x2b01:00","dateModified": "2020-11-06T16:12:40\x2b01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -108,7 +108,7 @@
                                 </a>
                             </span></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-11-06>2020-11-06</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 943 words&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 946 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>5 min&nbsp;</div>
         </div><div class="content"><p>A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at <code>debug</code> GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin <a href="https://github.com/PortSwigger/param-miner" target="_blank" rel="noopener noreffer">param-miner</a>
 . There was no way to exploit SSRF but interesting parameter <code>action</code> was discovered. Future investigation show that it is default behavior of <a href="https://craftcms.com/" target="_blank" rel="noopener noreffer">Craft CMS</a>
@@ -283,7 +283,7 @@ doge in ~/phpggc on master ● ● λ
 </code></pre></td></tr></table>
 </div>
 </div><h1 id="remote-code-execution">Remote code execution</h1>
-<p>A few days later I found better way to exploit this vulnerability. As I mentioned earlier method <code>evaluateDynamicContent</code> was disabled at Craft CMS but it was not at <strong>Yii::Base::View</strong>. As you may already know Twig template engine support variables. We can use them to create new <strong>Yii::Base::View</strong> object and call <code>evaluateDynamicContent</code> method directly and bypass protection mechanism. Final exploit will looks like.</p>
+<p>A few days later I found better way to exploit this vulnerability. As I mentioned earlier method <code>evaluateDynamicContent</code> was disabled at Craft CMS but it was not at <strong>Yii::Base::View</strong>. As you may already know Twig template engine support variables by <code>%</code> declaration. We can use them to create new <strong>Yii::Base::View</strong> object and call <code>evaluateDynamicContent</code> method directly and bypass protection mechanism. Final exploit will looks like.</p>
 <p><figure><img src="/svg/loading.min.svg" data-sizes="auto" data-src="/images/seomatic-rce.png" alt="Seomatic RCE" title="Seomatic RCE" class="lazyload">
 <figcaption class="image-caption">Seomatic RCE</figcaption></figure>
 </p>

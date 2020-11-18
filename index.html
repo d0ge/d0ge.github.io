@@ -11,7 +11,7 @@
 <meta property="og:description" content="Security" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:updated_time" content="2020-02-24T13:20:48+01:00" /><meta property="og:site_name" content="Wow such pwn!" />
+<meta property="og:updated_time" content="2020-11-06T16:12:40+01:00" /><meta property="og:site_name" content="Wow such pwn!" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Wow such pwn!"/>
 <meta name="twitter:description" content="Security"/>
@@ -78,6 +78,48 @@
         </div><h2 class="home-description"><div id=rtp-8e6800de60dd47ce7feeffeb597c256e hidden=true>The louder you become, the more you can miss</div>
                 <div id=tp-8e6800de60dd47ce7feeffeb597c256e class="typeit"></div></h2><div class="home-social-links"></div>
 </div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/multiple-vulnerabilities-craft-cms-seomatic/">Multiple vulnerabilities at Craft CMS SEOmatic plugin</a>
+    </h1><div class="post-meta"><span class="post-author">
+            <a class="author" href="https://twitter.com/d4d89704243" rel="author" target="_blank">
+                <i class="fas fa-user-circle fa-fw"></i>d4d
+            </a>
+        </span>&nbsp;<span class="post-publish">
+            published on&nbsp;<time datetime=2020-11-06>2020-11-06</time>
+        </span>&nbsp;<span class="post-category">included in&nbsp;
+                    <span>
+                        <a href="/categories/remote-code-execution">
+                            <i class="far fa-folder fa-fw"></i>Remote code execution
+                        </a>
+                    </span>&nbsp;
+                    <span>
+                        <a href="/categories/server-side-request-forgery">
+                            <i class="far fa-folder fa-fw"></i>Server side request forgery
+                        </a>
+                    </span>&nbsp;
+                    <span>
+                        <a href="/categories/code-review">
+                            <i class="far fa-folder fa-fw"></i>Code review
+                        </a>
+                    </span></span></div><div class="content"><p>A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at <code>debug</code> GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin <a href="https://github.com/PortSwigger/param-miner" target="_blank" rel="noopener noreffer">param-miner</a>
+. There was no way to exploit SSRF but interesting parameter <code>action</code> was discovered. Future investigation show that it is default behavior of <a href="https://craftcms.com/" target="_blank" rel="noopener noreffer">Craft CMS</a>
+. Fast search by public CVE retured promising vulnerability CVE-2018-14716. You can find information about issue and way to exploit it at blog post <a href="http://ha.cker.info/exploitation-of-server-side-template-injection-with-craft-cms-plguin-seomatic/" target="_blank" rel="noopener noreffer">0xB455</a>
+. When you will finish reading article return and we find way to bypass fix and execute code at vulnerable system.</p>
+<p>Draft</p></div><div class="post-footer">
+        <a href="/multiple-vulnerabilities-craft-cms-seomatic/">Read More</a><div class="post-tags">&nbsp;<span>
+                        <a href="/tags/rce">
+                            <i class="fas fa-tag fa-fw"></i>rce
+                        </a>
+                    </span>&nbsp;<span>
+                        <a href="/tags/ssrf">
+                            <i class="fas fa-tag fa-fw"></i>ssrf
+                        </a>
+                    </span>&nbsp;<span>
+                        <a href="/tags/exploit">
+                            <i class="fas fa-tag fa-fw"></i>exploit
+                        </a>
+                    </span></div></div>
+</article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/data-processing-libraries-part-two/">Security of Data processing libraries Part 2</a>
     </h1><div class="post-meta"><span class="post-author">

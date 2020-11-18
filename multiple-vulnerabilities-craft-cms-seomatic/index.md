@@ -99,7 +99,7 @@ doge in ~/phpggc on master ● ● λ
 ```
 
 # Remote code execution 
-A few days later I found better way to exploit this vulnerability. As I mentioned earlier method `evaluateDynamicContent` was disabled at Craft CMS but it was not at **Yii::Base::View**. As you may already know Twig template engine support variables. We can use them to create new **Yii::Base::View** object and call `evaluateDynamicContent` method directly and bypass protection mechanism. Final exploit will looks like.
+A few days later I found better way to exploit this vulnerability. As I mentioned earlier method `evaluateDynamicContent` was disabled at Craft CMS but it was not at **Yii::Base::View**. As you may already know Twig template engine support variables by `%` declaration. We can use them to create new **Yii::Base::View** object and call `evaluateDynamicContent` method directly and bypass protection mechanism. Final exploit will looks like.
 
 ![Seomatic RCE](/images/seomatic-rce.png)
 
