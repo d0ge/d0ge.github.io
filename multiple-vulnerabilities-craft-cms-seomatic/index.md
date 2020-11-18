@@ -3,8 +3,6 @@
 
 A couple of months ago I was performing retest of an interesting Server Side Request Forgery (SSRF) vulnerability at `debug` GET parameter. Developers disabled it on load balancer and I decided to perform some fuzzing with awesome Burp Suite plugin [param-miner](https://github.com/PortSwigger/param-miner). There was no way to exploit SSRF but interesting parameter `action` was discovered. Future investigation show that it is default behavior of [Craft CMS](https://craftcms.com/). Fast search by public CVE retured promising vulnerability CVE-2018-14716. You can find information about issue and way to exploit it at blog post [0xB455](http://ha.cker.info/exploitation-of-server-side-template-injection-with-craft-cms-plguin-seomatic/). When you will finish reading article return and we find way to bypass fix and execute code at vulnerable system.
 
-Draft
-
 <!--more-->
 
 ### Initial setup of vulnerable CMS
